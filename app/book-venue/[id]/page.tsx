@@ -27,10 +27,11 @@ export default function BookVenue() {
         const response = await res.json()
         const data = response.data
         const filteredVenues = data
-          .filter((item: Record<string, any>) => item.hasOwnProperty(venueId))
+          .filter((item: Record<string, any>) => venueId && item.hasOwnProperty(venueId))
           .flatMap((item: Record<string, any>) => {
+            if (!venueId) return []
             const venue = item[venueId]
-            return venue.rooms ? Object.values(venue.rooms) : []
+            return venue?.rooms ? Object.values(venue.rooms) : []
           })
         setVenues(filteredVenues)
       } catch (error) {
