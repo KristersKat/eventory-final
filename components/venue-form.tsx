@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import { Plus, Headphones, Clipboard, Accessibility, Lightbulb } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { AddItemModal, type InventoryItem } from './add-item-modal'
-import { useRouter } from 'next/navigation'
 
 interface VenueFormData {
   name: string
@@ -21,7 +20,6 @@ interface VenueFormProps {
 const steps = ['Basic Info', 'Photos', 'Inventory']
 
 export function VenueForm({ onSubmit }: VenueFormProps) {
-  const router = useRouter()
   const [currentStep, setCurrentStep] = useState(0)
   const [showAddItem, setShowAddItem] = useState(false)
   const [venueData, setVenueData] = useState<VenueFormData>({

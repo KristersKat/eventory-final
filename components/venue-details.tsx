@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 
 interface VenueDetailsProps {
   id: string
@@ -19,7 +20,7 @@ const bookingSchema = z.object({
 
 type BookingFormData = z.infer<typeof bookingSchema>
 
-export function VenueDetails({ id, roomName, description, photo }: VenueDetailsProps) {
+export function VenueDetails({ roomName, description, photo }: VenueDetailsProps) {
   const { register, handleSubmit, formState: { errors } } = useForm<BookingFormData>({
     resolver: zodResolver(bookingSchema),
   })
@@ -31,7 +32,7 @@ export function VenueDetails({ id, roomName, description, photo }: VenueDetailsP
 
   return (
     <div className="border rounded-lg p-4 shadow-sm">
-      {photo && <img src={photo} alt={roomName} className="mb-4" />}
+      {photo && <Image src={photo} alt={roomName} className="mb-4" />}
       <h2 className="text-xl font-semibold mb-2">{roomName}</h2>
       <p className="mb-4">{description}</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

@@ -55,9 +55,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <header className="text-black p-4">
           <nav className="container mx-auto flex justify-between items-center">
-            <a href="/" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <img src="/logo.svg" alt="Logo" className="h-24 mr-2" />
-            </a>
+            </Link>
             <div>
               {!isLoggedIn && (
                 <>

@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
     const data = await response.json()
     return new Response(JSON.stringify(data), { status: response.status })
-  } catch (error) {
+  } catch {
     return new Response(JSON.stringify({ success: false, message: 'Internal Server Error' }), { status: 500 })
   }
 }
