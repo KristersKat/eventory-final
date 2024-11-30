@@ -10,6 +10,7 @@ interface Venue {
   roomName: string
   description: string
   photo: string | null
+  rooms?: Record<string, any>
 }
 
 export default function BookVenue() {
@@ -27,8 +28,8 @@ export default function BookVenue() {
         const response = await res.json()
         const data = response.data
         const filteredVenues = data
-          .filter((item: Record<string, any>) => venueId && item.hasOwnProperty(venueId))
-          .flatMap((item: Record<string, any>) => {
+          .filter((item: Record<string, Venue>) => venueId && item.hasOwnProperty(venueId))
+          .flatMap((item: Record<string, Venue>) => {
             if (!venueId) return []
             const venue = item[venueId]
             return venue?.rooms ? Object.values(venue.rooms) : []

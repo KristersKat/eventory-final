@@ -1,9 +1,9 @@
 'use client'
 
-import { VenueForm } from '@/components/venue-form'
+import { VenueForm, VenueFormData } from '@/components/venue-form'
 
 export default function AddVenue() {
-  const handleSubmit = async (venueData: any) => {
+  const handleSubmit = async (venueData: VenueFormData) => {
     // Here you would typically send the data to your backend
     console.log('Submitting venue data:', venueData)
     // Redirect to the venue management page or show a success message

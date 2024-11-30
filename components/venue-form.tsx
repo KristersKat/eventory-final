@@ -5,8 +5,9 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { AddItemModal, type InventoryItem } from './add-item-modal'
+import Image from 'next/image'
 
-interface VenueFormData {
+export interface VenueFormData {
   name: string
   description: string
   photo: File | null
@@ -139,7 +140,7 @@ export function VenueForm({ onSubmit }: VenueFormProps) {
             />
             {venueData.photo && (
               <div className="mt-4">
-                <img
+                <Image
                   src={URL.createObjectURL(venueData.photo)}
                   alt="Venue photo"
                   className="w-full h-32 object-cover rounded"

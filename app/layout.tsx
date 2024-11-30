@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 interface LoginResponse {
   success: boolean
@@ -56,7 +57,7 @@ export default function RootLayout({
         <header className="text-black p-4">
           <nav className="container mx-auto flex justify-between items-center">
             <Link href="/" className="flex items-center">
-              <img src="/logo.svg" alt="Logo" className="h-24 mr-2" />
+              <Image src="/logo.svg" alt="Logo" className="h-24 mr-2" width={200} height={400} />
             </Link>
             <div>
               {!isLoggedIn && (
