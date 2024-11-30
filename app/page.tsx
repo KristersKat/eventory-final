@@ -60,7 +60,7 @@ export default function Home() {
       <h1 className="text-4xl font-bold mb-8 text-center">Venue Booking System</h1>
       <div className="flex justify-center space-x-4">
         <Button size="lg" onClick={handleAddVenueClick}>Add Your Venue</Button>
-        <Link href="/book-venue">
+        <Link href="/book-venue/kristers">
           <Button size="lg" variant="outline">Book a Venue</Button>
         </Link>
       </div>

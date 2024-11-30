@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { VenueCard } from '@/components/venue-card'
-import { useParams, useRouter } from 'next/navigation'
+import { VenueDetails } from '@/components/venue-details'
+import { useParams } from 'next/navigation'
 
 interface Venue {
   id: string
@@ -15,6 +16,7 @@ export default function BookVenue() {
   const { id } = useParams()
   const [venues, setVenues] = useState<Venue[]>([])
   const [loading, setLoading] = useState(true)
+  const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
   const venueId = Array.isArray(id) ? id[0] : id
 
   useEffect(() => {
@@ -30,8 +32,6 @@ export default function BookVenue() {
             const venue = item[venueId]
             return venue.rooms ? Object.values(venue.rooms) : []
           })
-        console.log(data)
-        console.log(filteredVenues)
         setVenues(filteredVenues)
       } catch (error) {
         console.error('Error fetching venues:', error)
@@ -45,12 +45,22 @@ export default function BookVenue() {
 
   if (loading) return <div>Loading...</div>
 
+  if (selectedVenue) {
+    return <VenueDetails {...selectedVenue} />
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Available Venues</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {venues.map((venue) => (
-          <VenueCard key={venue.id} {...venue} id={Number(venue.id)} />
+          <VenueCard
+            key={venue.id}
+            id={Number(venue.id)}
+            roomName={venue.roomName}
+            onClick={() => setSelectedVenue(venue)}
+            onButtonClick={() => setSelectedVenue(venue)}
+          />
         ))}
       </div>
     </div>

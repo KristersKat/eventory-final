@@ -93,7 +93,7 @@ export function VenueForm({ onSubmit }: VenueFormProps) {
       const result = await response.json()
       console.log('Venue data submitted successfully:', result)
       onSubmit(venueData)
-      router.push('/')
+      //router.push('/')
     } catch (error) {
       console.error('Error submitting venue data:', error)
     }
