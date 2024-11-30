@@ -10,7 +10,7 @@ interface Venue {
   roomName: string
   description: string
   photo: string | null
-  rooms?: Record<string, any>
+  rooms?: Record<string, string>
 }
 
 export default function BookVenue() {
